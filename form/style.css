@@ -1,0 +1,95 @@
+/* General styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f4f8; /* Light grayish-blue background */
+    color: #333333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Centered form container with an outline */
+form {
+    background: #ffffff;
+    color: #333333;
+    border: 2px solid #6a11cb; /* Outline around the form */
+    border-radius: 12px;
+    padding: 30px 40px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+    box-sizing: border-box; /* Include padding and border in width */
+}
+
+/* Form header */
+h1 {
+    text-align: center;
+    font-size: 1.8rem;
+    color: #6a11cb; /* Accent color for the header */
+    margin-bottom: 20px;
+}
+
+/* Form labels and inputs */
+label {
+    font-weight: bold;
+    margin-bottom: 8px;
+    display: block;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #cccccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    box-sizing: border-box; /* Include padding and border in width */
+    transition: border-color 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+textarea:focus {
+    border-color: #6a11cb; /* Accent color for active fields */
+    outline: none;
+}
+
+/* Textarea specific */
+textarea {
+    resize: none;
+}
+
+/* Submit button */
+button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background: #6a11cb; /* Solid accent color */
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+    background: #4c09a3; /* Darker accent color on hover */
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+    form {
+        padding: 20px 30px;
+    }
+    
+    h1 {
+        font-size: 1.5rem;
+    }
+}

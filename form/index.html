@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FormSubmit Example</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <h1>Contact Us</h1>
+    <form action="https://formsubmit.co/aaron@aaroncole.dev" method="POST">
+        <!-- Add your form fields here -->
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        <br><br>
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <br><br>
+        
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="4" required></textarea>
+        <br><br>
+        
+        <!-- Add hidden inputs for security and functionality -->
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="https://Aaroncole.dev/thank-you.html">
+        <input type="hidden" name="_subject" value="New Submission!">
+        
+        <button type="submit">Send</button>
+    </form>
+</body>
+</html>
