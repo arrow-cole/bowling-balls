@@ -1,22 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FormSubmit Example</title>
-    <link rel="stylesheet" href="style.css">
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Full Screen Form</title>
+<style>
+    body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow: hidden;
+    }
+    iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+    }
+</style>
 </head>
 <body>
-    <h1>Contact Us</h1>
-    <form action="https://getform.io/f/aejjewzb" method="POST">Name
-        <input type="text" name="name" required> Email
-        <input type="email" name="email" required>Message
-        <input type="text" name="message">
-        <!-- add hidden Honeypot input to prevent spams -->
-        <input type="hidden" name="_gotcha" style="display:none !important">
-        <input type="hidden" name="_next" value="https://Aaroncole.dev/thank-you.html">
-        <button type="submit">Send</button>
-    </form>
+<iframe src="https://form.jotform.com/243264858775169" frameborder="0" scrolling="yes">Loading…</iframe>
 </body>
 </html>
