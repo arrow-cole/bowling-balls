@@ -1,4 +1,10 @@
 {
+    // Host
     "liveServer.settings.host": "localhost",
-    "liveServer.settings.port": 10
+    "fiveServer.host": "loacalhost",
+    // Port
+    "liveServer.settings.port": 10,
+    "fiveServer.port": 8080
+
+
 }
