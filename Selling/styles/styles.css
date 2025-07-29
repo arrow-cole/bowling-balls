@@ -35,6 +35,28 @@ h1 {
     margin: 10px 0 0;
 }
 
+.back-home-button {
+    position: absolute;
+    top: 45px;
+    left: 10px;
+    color: #007bff;
+    text-decoration: none;
+    font-size: 16px;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+.sold-button {
+    position: absolute;
+    top: 45px;
+    right: 10px;
+    color: #007bff;
+    text-decoration: none;
+    font-size: 16px;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 5px 10px;
+    border-radius: 5px;
+}
 a {
     text-decoration: none;
     color: #007bff;
