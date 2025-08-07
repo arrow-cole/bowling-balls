@@ -1,4 +1,12 @@
-    a {
+.buy-button {
+    position: absolute;
+    color: #007bff;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+    .back-home-button {
         position: absolute;
         top: 45px;
         left: 10px;
