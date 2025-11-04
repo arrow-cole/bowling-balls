@@ -19,6 +19,23 @@
     <p><strong>Finish:</strong> 500, 1000, 2000 Siaair / Crown Factory Polish</p>
     <p><strong>RG:</strong> 2.554</p>
     <p><strong>Diff:</strong> 0.038</p>
-    <a href="../">Back to home</a>
+    <a href="#" id="home-link">Back to home</a>
+
+        <script>
+            // Check if the referring page exists
+            const homeLink = document.getElementById('home-link');
+
+            homeLink.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                // If the browser knows the previous page, go back
+                if(document.referrer && document.referrer !== window.location.href) {
+                    window.location.href = document.referrer;
+                } else {
+                    // Otherwise, go to ../
+                    window.location.href = '../';
+                }
+            });
+        </script>
 </body>
 </html>

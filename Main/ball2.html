@@ -17,6 +17,24 @@
     <p><strong>Core Type:</strong> Polyester</p>
     <p><strong>Coverstock:</strong> Polyester</p>
     <p><strong>Finish:</strong> Crown Factory Polish</p>
-    <a href="../">Back to home</a>
+    <a href="#" id="home-link">Back to home</a>
+
+        <script>
+            // Check if the referring page exists
+            const homeLink = document.getElementById('home-link');
+
+            homeLink.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                // If the browser knows the previous page, go back
+                if(document.referrer && document.referrer !== window.location.href) {
+                    window.location.href = document.referrer;
+                } else {
+                    // Otherwise, go to ../
+                    window.location.href = '../';
+                }
+            });
+        </script>
+
 </body>
 </html>

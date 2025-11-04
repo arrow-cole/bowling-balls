@@ -23,7 +23,24 @@
     <a href="https://www.facebook.com/marketplace/item/4562478997305023/?ref=marketplace_profile&referral_code=undefined" target="_blank">Buy Now</a>
     </div>
     <div class="back-home-button">
-    <a href="./">Back to home</a>
+    <a href="#" id="home-link">Back to home</a>
+
+        <script>
+            // Check if the referring page exists
+            const homeLink = document.getElementById('home-link');
+
+            homeLink.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                // If the browser knows the previous page, go back
+                if(document.referrer && document.referrer !== window.location.href) {
+                    window.location.href = document.referrer;
+                } else {
+                    // Otherwise, go to index.html
+                    window.location.href = 'index.html';
+                }
+            });
+        </script>
     </div>
 </body>
 </html>
