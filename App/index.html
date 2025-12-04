@@ -5,11 +5,66 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ball Collection</title>
     <link rel="stylesheet" href="app.css">
+
+    <style>
+        /* Simple tab styles */
+        .tabs {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .tab {
+            padding: 10px 20px;
+            background: #ddd;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .tab.active {
+            background: #333;
+            color: white;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        table, th, td {
+            border: 1px solid #bbb;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <h1>My Ball Collection</h1>
-        <h4>Total Active Balls: 11</h4>
+
+<div class="container">
+    <h1>My Ball Collection</h1>
+
+    <!-- TABS -->
+    <div class="tabs">
+        <div class="tab active" onclick="showTab('active')">Active Balls</div>
+        <div class="tab" onclick="showTab('retired')">Retired Balls</div>
+    </div>
+
+    <!-- ACTIVE BALLS -->
+    <div id="active" class="tab-content active">
+        <h4>Total Active Balls: 10</h4>
         <table>
             <tr>
                 <th>Brand</th>
@@ -17,18 +72,13 @@
                 <th>Serial Number</th>
                 <th>Weight</th>
             </tr>
-        <!--    <tr>
-                <td>Brunswick</td>
-                <td>Melee Jab Midnight Blue</td>
-                <td>KOB12071</td>
-                <td>15 Pounds</td>
-            </tr> -->
-           <tr>
+
+            <tr>
                 <td>Brunswick</td>
                 <td>Melee Jab Blood Red</td>
                 <td>GND42039</td>
                 <td>14 Pounds</td>
-            </tr> 
+            </tr>
             <tr>
                 <td>Brunswick</td>
                 <td>Tzone</td>
@@ -43,22 +93,10 @@
             </tr>
             <tr>
                 <td>Hammer</td>
-                <td>Purple Hammer (Urethane)</td>
-                <td>CPJE2045</td>
-                <td>15 Pounds</td>
-            </tr>
-            <tr>
-                <td>Hammer</td>
                 <td>Raw Hammer (Pink)</td>
                 <td>MOGF1084</td>
                 <td>14 Pounds</td>
             </tr>
-            <tr>
-                <td>Hammer</td>
-                <td>Raw Hammer (Black)</td>
-                <td>LOA52292</td>
-                <td>14 Pounds</td>
-            </tr> 
             <tr>
                 <td>Hammer</td>
                 <td>Anger</td>
@@ -71,18 +109,6 @@
                 <td>???</td>
                 <td>14 Pounds</td>
             </tr>
-        <!--    <tr>
-                <td>Radical</td>
-                <td>Katana Dragon</td>
-                <td>DL931090</td>
-                <td>15 Pounds</td>
-            </tr> -->
-        <!--    <tr>
-                <td>DV8</td>
-                <td>Diva XoXo</td>
-                <td>Coming Soon</td>
-                <td>15 Pounds</td>
-            </tr> -->
             <tr>
                 <td>Motiv</td>
                 <td>Black Venom</td>
@@ -109,5 +135,55 @@
             </tr>
         </table>
     </div>
+
+    <!-- RETIRED BALLS -->
+    <div id="retired" class="tab-content">
+        <h4>Retired Ball List</h4>
+        <p>Total Balls: 3</p>
+        <table>
+            <tr>
+                <th>Brand</th>
+                <th>Bowling Ball</th>
+                <th>Serial Number</th>
+                <th>Weight</th>
+            </tr>
+
+            <tr>
+                <td>Brunswick</td>
+                <td>Melee Jab Midnight Blue</td>
+                <td>KOB12071</td>
+                <td>15 Pounds</td>
+            </tr>
+
+            <tr>
+                <td>Radical</td>
+                <td>Katana Dragon</td>
+                <td>DL931090</td>
+                <td>15 Pounds</td>
+            </tr>
+
+            <tr>
+                <td>DV8</td>
+                <td>Diva XoXo</td>
+                <td>Coming Soon</td>
+                <td>15 Pounds</td>
+            </tr>
+        </table>
+    </div>
+
+</div>
+
+<script>
+function showTab(id) {
+    // Hide all tabs
+    document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+
+    // Activate selected
+    document.getElementById(id).classList.add('active');
+    event.target.classList.add('active');
+}
+</script>
+
 </body>
 </html>
