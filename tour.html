@@ -29,12 +29,8 @@
         <!-- ✅ Editable list of balls -->
         <div id="bagList" class="hidden-data">
             Tzone-b
-            Purple-h
-            Black-m
-            Jackal-m
-            Thrill-m
-            Raptor-m
-        
+            purple-h
+            -m
         </div>
         <!-- ✅ End editable section -->
 
@@ -45,48 +41,69 @@
     <iframe src="index.html" id="dataFrame" style="display:none;"></iframe>
 
     <script>
-        let ballData = {};
+    let ballData = {};
 
-        // Read the balls from index.html after iframe loads
-        document.getElementById("dataFrame").onload = () => {
-            const doc = document.getElementById("dataFrame").contentDocument;
-            const items = doc.querySelectorAll(".ball-item[data-id]");
+    // Read the balls from index.html after iframe loads
+    document.getElementById("dataFrame").onload = () => {
+        const doc = document.getElementById("dataFrame").contentDocument;
+        const items = doc.querySelectorAll(".ball-item[data-id]");
 
-            items.forEach(div => {
-                const id = div.dataset.id.toLowerCase();
-                ballData[id] = {
-                    name: div.dataset.name,
-                    img: div.dataset.img,
-                    link: div.dataset.link
-                };
-            });
+        items.forEach(div => {
+            const id = div.dataset.id.toLowerCase();
+            ballData[id] = {
+                id: id,
+                name: div.dataset.name,
+                img: div.dataset.img,
+                link: div.dataset.link
+            };
+        });
 
-            loadBag();
-        };
+        loadBag();
+    };
 
-        function loadBag() {
-            const rawList = document.getElementById("bagList").innerText.trim().split("\n");
-            const bagDisplay = document.getElementById("bagDisplay");
-            bagDisplay.innerHTML = "";
+    function loadBag() {
+        const rawList = document.getElementById("bagList").innerText.trim().split("\n");
+        const bagDisplay = document.getElementById("bagDisplay");
+        bagDisplay.innerHTML = "";
 
-            rawList.forEach(line => {
-                const clean = line.trim().toLowerCase().replace(" ", "");
-                if (ballData[clean]) {
-                    const b = ballData[clean];
-                    const div = document.createElement("div");
-                    div.classList.add("bag-item");
+        rawList.forEach(line => {
+            const clean = line.trim().toLowerCase();
 
-                    div.innerHTML = `
-                        <a href="${b.link}">
-                            <img src="${b.img}" alt="${b.name}">
-                        </a>
-                        <p>${b.name}</p>
-                    `;
+            // ⭐ If user typed "-b", "-h", "-m"
+            if (clean === "-b" || clean === "-h" || clean === "-m") {
+                const tag = clean.replace("-", ""); // b, h, or m
 
-                    bagDisplay.appendChild(div);
-                }
-            });
-        }
-    </script>
+                Object.values(ballData).forEach(ball => {
+                    if (ball.id.endsWith("-" + tag)) {
+                        addBallToDisplay(ball, bagDisplay);
+                    }
+                });
+
+                return; // continue to next line
+            }
+
+            // ⭐ Normal single ball match
+            const key = clean.replace(" ", "");
+            if (ballData[key]) {
+                addBallToDisplay(ballData[key], bagDisplay);
+            }
+        });
+    }
+
+    function addBallToDisplay(ball, container) {
+        const div = document.createElement("div");
+        div.classList.add("bag-item");
+
+        div.innerHTML = `
+            <a href="${ball.link}">
+                <img src="${ball.img}" alt="${ball.name}">
+            </a>
+            <p>${ball.name}</p>
+        `;
+
+        container.appendChild(div);
+    }
+</script>
+
 </body>
 </html>
