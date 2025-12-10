@@ -10,31 +10,33 @@
 <body>
     <h1>Ball 7</h1>
     <p><strong>Brand:</strong> Motiv</p>
-    <p><strong>Model:</strong> Black Venom</p>
-    <p><strong>Serial #:</strong> WAS 04988</p>
+    <p><strong>Model:</strong> Jackel Ghost</p>
+    <p><strong>Serial #:</strong> WGP 04709</p>
     <p><strong>Weight:</strong> 14 lbs</p>
-    <p><strong>Color:</strong> Black</p>
-    <p><strong>Core Type:</strong> Gear APG Asymmetric</p>
+    <p><strong>Color:</strong> Black / Purple Solid</p>
+    <p><strong>Core Type:</strong> Predator™ V2 Asymmetric</p>
     <p><strong>Core Shape:</strong> Asymmetrical</p>
-    <p><strong>Coverstock:</strong> Leverage MFS Solid Reactive</p>
-    <p><strong>Finish:</strong> 4000 Grit Sanded</p>
-    <p><strong>RG:</strong> 2.50</p>
+    <p><strong>Coverstock:</strong> Coercion™ HFS Reactive</p>
+    <p><strong>Finish:</strong> 3000 Grit LSS</p>
+    <p><strong>RG:</strong> 2.51</p>
     <p><strong>Diff:</strong> 0.033</p>
-
     <a href="#" id="home-link">Back to home</a>
 
-    <script>
-        const homeLink = document.getElementById('home-link');
+        <script>
+            // Check if the referring page exists
+            const homeLink = document.getElementById('home-link');
 
-        homeLink.addEventListener('click', function(e) {
-            e.preventDefault();
+            homeLink.addEventListener('click', function(e) {
+                e.preventDefault();
 
-            if (document.referrer && document.referrer !== window.location.href) {
-                window.location.href = document.referrer;
-            } else {
-                window.location.href = '../';
-            }
-        });
-    </script>
+                // If the browser knows the previous page, go back
+                if(document.referrer && document.referrer !== window.location.href) {
+                    window.location.href = document.referrer;
+                } else {
+                    // Otherwise, go to ../
+                    window.location.href = '../';
+                }
+            });
+        </script>
 </body>
 </html>
