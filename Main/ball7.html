@@ -3,38 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ball 6</title>
+    <title>Ball 7</title>
     <link rel="stylesheet" href="styles/styles.css">
     <link rel="stylesheet" href="styles/home.css">
 </head>
 <body>
-    <h1>Ball 6</h1>
-    <p><strong>Brand:</strong> Motiv</p>
-    <p><strong>Model:</strong> Black Venom</p>
-    <p><strong>Serial #:</strong> WAS 04988</p>
-    <p><strong>Weight:</strong> 14 lbs</p>
-    <p><strong>Color:</strong> Black</p>
-    <p><strong>Core Type:</strong> Gear APG Asymmetric</p>
-    <p><strong>Core Shape:</strong> Asymmetrical</p>
-    <p><strong>Coverstock:</strong> Leverage MFS Solid Reactive</p>
-    <p><strong>Finish:</strong> 4000 Grit Sanded</p>
-    <p><strong>RG:</strong> 2.50</p>
-    <p><strong>Diff:</strong> 0.033</p>
-
+    <h1>Ball 7</h1>
+    <p><strong>Brand:</strong> Ebonite</p>
+    <p><strong>Model:</strong> The one Remix</p>
+    <p><strong>Serial #:</strong> GPB1105D</p>
+    <p><strong>Weight:</strong> 15 lbs</p>
+    <p><strong>Color:</strong> Teal / Purple / Violet</p>
+    <p><strong>Core Type:</strong> Centrex Symmetrical Mass Bias</p>
+    <p><strong>Core Shape:</strong> Symmetrical</p>
+    <p><strong>Coverstock:</strong> GB14.4 Solid Reactive</p>
+    <p><strong>Finish:</strong> 500, 1000, 2000 Siaair / Crown Factory Compound</p>
+    <p><strong>RG:</strong> 2.466</p>
+    <p><strong>Diff:</strong> 0.056</p>
     <a href="#" id="home-link">Back to home</a>
 
-    <script>
-        const homeLink = document.getElementById('home-link');
+        <script>
+            // Check if the referring page exists
+            const homeLink = document.getElementById('home-link');
 
-        homeLink.addEventListener('click', function(e) {
-            e.preventDefault();
+            homeLink.addEventListener('click', function(e) {
+                e.preventDefault();
 
-            if (document.referrer && document.referrer !== window.location.href) {
-                window.location.href = document.referrer;
-            } else {
-                window.location.href = '../';
-            }
-        });
-    </script>
+                // If the browser knows the previous page, go back
+                if(document.referrer && document.referrer !== window.location.href) {
+                    window.location.href = document.referrer;
+                } else {
+                    // Otherwise, go to ../
+                    window.location.href = '../';
+                }
+            });
+        </script>
 </body>
 </html>
