@@ -1,68 +1,145 @@
+:root {
+  --bg: #07090f;
+  --panel: #0c1220;
+  --glow: #00f0ff;
+  --pink: #ff4fd8;
+  --text: #e5f0ff;
+  --muted: #7c8db5;
+}
+
+* {
+  box-sizing: border-box;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f8f9fa;
-    margin: 0;
-    padding: 0;
+  font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background:
+    radial-gradient(800px 400px at 20% -10%, rgba(0,240,255,0.15), transparent 40%),
+    radial-gradient(600px 300px at 80% 10%, rgba(255,79,216,0.12), transparent 40%),
+    linear-gradient(180deg, #05070d, #07090f 40%, #05070d);
+  margin: 0;
+  padding: 0;
+  color: var(--text);
+  min-height: 100vh;
 }
 
+/* Title */
 h1 {
-    background-color: #343a40;
-    color: #fff;
-    padding: 20px;
-    text-align: center;
+  text-align: center;
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin: 24px 0 8px;
+  color: #dff9ff;
+  background: transparent;
+  padding: 20px;
+  text-shadow:
+    0 0 12px rgba(0,240,255,0.6),
+    0 0 24px rgba(255,79,216,0.35);
 }
 
+/* Grid */
 .ball-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
-    padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 18px;
+  padding: 28px;
+  max-width: 1300px;
+  margin: auto;
 }
 
+/* Cards */
 .ball-item {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    padding: 10px;
-    text-align: center;
+  position: relative;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01)),
+    radial-gradient(200px 120px at top, rgba(0,240,255,0.12), transparent 60%),
+    var(--panel);
+  border-radius: 16px;
+  padding: 14px 12px 18px;
+  overflow: hidden;
+  border: 1px solid rgba(0,240,255,0.2);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
 }
 
+.ball-item::before {
+  content: "";
+  position: absolute;
+  inset: -40%;
+  background: linear-gradient(120deg, transparent 40%, rgba(0,240,255,0.4), transparent 60%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  transform: rotate(12deg);
+}
+
+.ball-item:hover::before {
+  opacity: 1;
+}
+
+.ball-item:hover {
+  transform: translateY(-6px) scale(1.02);
+  border-color: var(--pink);
+  box-shadow:
+    0 20px 40px rgba(0,0,0,0.6),
+    0 0 24px rgba(0,240,255,0.25),
+    0 0 36px rgba(255,79,216,0.25);
+}
+
+/* Images */
 .ball-item img {
-    max-width: 100%;
-    height: auto;
+  width: 100%;
+  height: 150px;
+  object-fit: contain;
+  border-radius: 12px;
+  filter: drop-shadow(0 10px 16px rgba(0,0,0,0.7));
 }
 
+/* Captions */
 .ball-item p {
-    margin: 10px 0 0;
+  margin-top: 10px;
+  font-size: 0.85rem;
+  text-align: center;
+  color: var(--muted);
+  letter-spacing: 0.06em;
+}
+
+/* Back + Sold Buttons */
+.back-home-button,
+.sold-balls-button {
+  position: fixed;
+  top: 14px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #00f0ff, #ff4fd8);
+  color: #05070d;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  z-index: 10;
 }
 
 .back-home-button {
-    position: absolute;
-    top: 45px;
-    left: 10px;
-    color: #007bff;
-    text-decoration: none;
-    font-size: 16px;
-    background-color: rgba(255, 255, 255, 0.8);
-    padding: 5px 10px;
-    border-radius: 5px;
-}
-.sold-balls-button {
-    position: absolute;
-    top: 45px;
-    right: 10px;
-    color: #007bff;
-    text-decoration: none;
-    font-size: 16px;
-    background-color: rgba(255, 255, 255, 0.8);
-    padding: 5px 10px;
-    border-radius: 5px;
+  left: 14px;
 }
 
+.sold-balls-button {
+  right: 14px;
+}
+
+.back-home-button:hover,
+.sold-balls-button:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 16px 35px rgba(0,0,0,0.75);
+}
+
+/* Links */
 a {
-    text-decoration: none;
-    color: #007bff;
+  color: var(--glow);
+  text-decoration: none;
 }
 
 a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
