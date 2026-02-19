@@ -3,34 +3,85 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Full Screen Form</title>
+<title>Form</title>
+
 <style>
-    body, html {
-        margin: 0;
-        padding: 0;
-        height: 100%;
-        overflow: hidden;
-    }
-    iframe {
-        width: 100%;
-        height: 100%;
-        border: none;
-    }
-    a {
-        position: absolute;
-        top: 10px;
-        left: 10px;
-        color: #000;
-        text-decoration: none;
-        font-size: 16px;
-        background-color: rgba(255, 255, 255, 0.8);
-        padding: 5px 10px;
-        border-radius: 5px;
-    }
+:root {
+  --bg: #07090f;
+  --glow: #00f0ff;
+  --pink: #ff4fd8;
+  --text: #e5f0ff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background:
+    radial-gradient(800px 400px at 20% -10%, rgba(0,240,255,0.15), transparent 40%),
+    radial-gradient(600px 300px at 80% 10%, rgba(255,79,216,0.12), transparent 40%),
+    linear-gradient(180deg, #05070d, #07090f 40%, #05070d);
+  overflow: hidden;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+/* iframe wrapper */
+.form-wrap {
+  position: absolute;
+  inset: 0;
+  padding: 12px;
+}
+
+iframe {
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
+  border: 1px solid rgba(0,240,255,0.25);
+  background: #0c1220;
+  box-shadow:
+    0 20px 40px rgba(0,0,0,0.6),
+    0 0 25px rgba(0,240,255,0.2);
+}
+
+/* Back Button */
+.back-home-button {
+  position: fixed;
+  top: 14px;
+  left: 14px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #00f0ff, #ff4fd8);
+  color: #05070d;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+  z-index: 10;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.back-home-button:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 16px 35px rgba(0,0,0,0.75);
+}
 </style>
 </head>
+
 <body>
-<iframe src="https://forms.gle/cESGRNfYzwSoZRKv8" frameborder="0" scrolling="yes">Loading…</iframe>
-<a href="../">Back Home</a>
+  <a class="back-home-button" href="../">⬅ Back Home</a>
+
+  <div class="form-wrap">
+    <iframe 
+      src="https://forms.gle/2EsynQL8vqir5C5Y8" 
+      frameborder="0" 
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade">
+      Loading…
+    </iframe>
+  </div>
 </body>
 </html>
