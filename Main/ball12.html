@@ -10,33 +10,30 @@
 <body>
     <h1>Ball 12</h1>
     <p><strong>Brand:</strong> Motiv</p>
-    <p><strong>Model:</strong> Forge Ember</p>
-    <p><strong>Serial #:</strong> WF0 09137D</p>
+    <p><strong>Model:</strong> Aspire</p>
+    <p><strong>Serial #:</strong> UYJ157043MT</p>
     <p><strong>Weight:</strong> 15 lbs</p>
-    <p><strong>Color:</strong> Gray / Red Pearl / Solid Black</p>
-    <p><strong>Core Type:</strong> Detonator™ Symmetric</p>
+    <p><strong>Color:</strong> Black / Red / Gold</p>
+    <p><strong>Core Type:</strong> Symmetrical Tyro core</p>
     <p><strong>Core Shape:</strong> Symmetrical</p>
-    <p><strong>Coverstock:</strong> Infusion™ MXC Hybrid Reactive</p>
-    <p><strong>Finish:</strong> 2000 Grit LSS</p>
-    <p><strong>RG:</strong> 2.47</p>
-    <p><strong>Diff:</strong> 0.055</p>
-    <a href="#" id="home-link">Back to home</a>
+    <p><strong>Coverstock:</strong> Polyester</p>
+    <p><strong>Finish:</strong> 6000 Grit LSP</p>
+    <p><strong>RG:</strong> 2.75</p>
+    <p><strong>Diff:</strong> 0.024</p>
 
-        <script>
-            // Check if the referring page exists
-            const homeLink = document.getElementById('home-link');
+    <a href="#" id="home-link">Back to home</a> 
 
-            homeLink.addEventListener('click', function(e) {
-                e.preventDefault();
+    <script>
+        const homeLink = document.getElementById('home-link');
 
-                // If the browser knows the previous page, go back
-                if(document.referrer && document.referrer !== window.location.href) {
-                    window.location.href = document.referrer;
-                } else {
-                    // Otherwise, go to ../
-                    window.location.href = '../';
-                }
-            });
-        </script>
+        homeLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            if (document.referrer && document.referrer !== window.location.href) {
+                window.location.href = document.referrer;
+            } else {
+                window.location.href = '../';
+            }
+        });
+    </script>
 </body>
 </html>

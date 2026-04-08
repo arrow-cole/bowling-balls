@@ -3,42 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ball 10</title>
+    <title>Ball 3</title>
     <link rel="stylesheet" href="styles/styles.css">
     <link rel="stylesheet" href="styles/home.css">
 </head>
 <body>
-    <h1>Ball 10</h1>
-    <p><strong>Brand:</strong> Brunswick</p>
-    <p><strong>Model:</strong> Crown 78U</p>
-    <p><strong>Serial #:</strong> LTA1262I</p>
+    <h1>Ball 3</h1>
+    <p><strong>Brand:</strong> Motiv</p>
+    <p><strong>Model:</strong> Black Venom</p>
+    <p><strong>Serial #:</strong> WAS 04988</p>
     <p><strong>Weight:</strong> 14 lbs</p>
-    <p><strong>Color:</strong> Purple, Grey</p>
-    <p><strong>Core Type:</strong> Urethane</p>
-    <p><strong>Core Shape:</strong> Symmetrical</p>
-    <p><strong>Coverstock:</strong> Urethane Solid 78D</p>
-    <p><strong>Finish:</strong> 500, 1000 Siaair Micro Pad</p>
-    <p><strong>RG:</strong> 2.566</p>
-    <p><strong>Diff:</strong> 0.046</p>
-        <div class="sold-message">
-        </div>
+    <p><strong>Color:</strong> Black</p>
+    <p><strong>Core Type:</strong> Gear APG Asymmetric</p>
+    <p><strong>Core Shape:</strong> Asymmetrical</p>
+    <p><strong>Coverstock:</strong> Leverage MFS Solid Reactive</p>
+    <p><strong>Finish:</strong> 4000 Grit Sanded</p>
+    <p><strong>RG:</strong> 2.50</p>
+    <p><strong>Diff:</strong> 0.033</p>
+
     <a href="#" id="home-link">Back to home</a>
 
-        <script>
-            // Check if the referring page exists
-            const homeLink = document.getElementById('home-link');
+    <script>
+        const homeLink = document.getElementById('home-link');
 
-            homeLink.addEventListener('click', function(e) {
-                e.preventDefault();
+        homeLink.addEventListener('click', function(e) {
+            e.preventDefault();
 
-                // If the browser knows the previous page, go back
-                if(document.referrer && document.referrer !== window.location.href) {
-                    window.location.href = document.referrer;
-                } else {
-                    // Otherwise, go to ../
-                    window.location.href = '../';
-                }
-            });
-        </script>
+            if (document.referrer && document.referrer !== window.location.href) {
+                window.location.href = document.referrer;
+            } else {
+                window.location.href = '../';
+            }
+        });
+    </script>
 </body>
 </html>
