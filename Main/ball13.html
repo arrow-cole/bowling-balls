@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ball 13</title>
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="styles/home.css">
+</head>
+<body>
+    <h1>Ball 13</h1>
+    <p><strong>Brand:</strong> Motiv</p>
+    <p><strong>Model:</strong> Primal Rage</p>
+    <p><strong>Serial #:</strong> Coming soon</p>
+    <p><strong>Weight:</strong> 15 lbs</p>
+    <p><strong>Color:</strong> Lava Red Pearl with Black and Green Pearl Neomark</p>
+    <p><strong>Core Type:</strong> Impulse V2</p>
+    <p><strong>Core Shape:</strong> Symmetrical</p>
+    <p><strong>Coverstock:</strong> Fusion Pearl Reactive</p>
+    <p><strong>Finish:</strong> 5000 Grit Laser Scan Polished (LSP)</p>
+    <p><strong>RG:</strong> 2.55</p>
+    <p><strong>Diff:</strong> 0.050</p>
+
+    <a href="#" id="home-link">Back to home</a>
+
+    <script>
+        const homeLink = document.getElementById('home-link');
+
+        homeLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            if (document.referrer && document.referrer !== window.location.href) {
+                window.location.href = document.referrer;
+            } else {
+                window.location.href = '../';
+            }
+        });
+    </script>
+</body>
+</html>

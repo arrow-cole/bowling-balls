@@ -8,7 +8,7 @@
 </head>
 <body>
     <h1>My Bowling Balls</h1>
-    <h2>Total Balls: 12</h2>
+    <h2>Total Balls: <span id="totalBalls">0</span></h2>
     <a href="Main/brands"> View Brands Totals</a>
     <table></table>
     <a href="Selling/">Balls Im Selling</a>
@@ -71,7 +71,7 @@
         </a>
     </div>
 
-    <div class="ball-item" data-id="Primal-m" data-name="Primal Ghost (Motiv)" data-img="Main/pictures/ball8.png" data-link="Main/ball8">
+    <div class="ball-item" data-id="Primal-r-m" data-name="Primal Ghost (Motiv)" data-img="Main/pictures/ball8.png" data-link="Main/ball8">
         <a href="Main/ball8">
             <img src="Main/pictures/ball8.png" alt="Ball 8">
             <p>Primal Ghost (Motiv)</p>
@@ -105,6 +105,55 @@
             <p>Aspire (Motiv)</p>
         </a>
     </div> 
+    <div class="ball-item" data-id="Primal-r-m" data-name="Primal Rage (Motiv)" data-img="Main/pictures/ball13.png" data-link="Main/ball13">
+        <a href="Main/ball13">
+            <img src="Main/pictures/ball13.png" alt="Ball 13">
+            <p>Primal Rage (Motiv)</p>
+        </a>
+    </div> 
+    <div class="ball-item" data-id="Venom-m" data-name="Venom ExJ (Motiv)" data-img="Main/pictures/ball14.png" data-link="Main/ball14">
+        <a href="Main/ball14">
+            <img src="Main/pictures/ball14.png" alt="Ball 14">
+            <p>Venom ExJ (Motiv)</p>
+        </a>
+    </div> <!--
+    <div class="ball-item" data-id="Aspire-m" data-name="Aspire (Motiv)" data-img="Main/pictures/ball15.png" data-link="Main/ball15">
+        <a href="Main/ball15">
+            <img src="Main/pictures/ball15.png" alt="Ball 15">
+            <p>Aspire (Motiv)</p>
+        </a>
+    </div> 
+    <div class="ball-item" data-id="Aspire-m" data-name="Aspire (Motiv)" data-img="Main/pictures/ball16.png" data-link="Main/ball16">
+        <a href="Main/ball16">
+            <img src="Main/pictures/ball16.png" alt="Ball 16">
+            <p>Aspire (Motiv)</p>
+        </a>
+    </div> 
+    <div class="ball-item" data-id="Aspire-m" data-name="Aspire (Motiv)" data-img="Main/pictures/ball17.png" data-link="Main/ball17">
+        <a href="Main/ball17">
+            <img src="Main/pictures/ball17.png" alt="Ball 17">
+            <p>Aspire (Motiv)</p>
+        </a>
+    </div> 
+    <div class="ball-item" data-id="Aspire-m" data-name="Aspire (Motiv)" data-img="Main/pictures/ball18.png" data-link="Main/ball18">
+        <a href="Main/ball18">
+            <img src="Main/pictures/ball18.png" alt="Ball 18">
+            <p>Aspire (Motiv)</p>
+        </a>
+    </div> 
+    <div class="ball-item" data-id="Aspire-m" data-name="Aspire (Motiv)" data-img="Main/pictures/ball19.png" data-link="Main/ball19">
+        <a href="Main/ball19">
+            <img src="Main/pictures/ball19.png" alt="Ball 19">
+            <p>Aspire (Motiv)</p>
+        </a>
+    </div> 
+    <div class="ball-item" data-id="Aspire-m" data-name="Aspire (Motiv)" data-img="Main/pictures/ball20.png" data-link="Main/ball20">
+        <a href="Main/ball20">
+            <img src="Main/pictures/ball20.png" alt="Ball 20">
+            <p>Aspire (Motiv)</p>
+        </a>
+    </div> 
+-->
 
     <div class="ball-item" data-id="c-s" data-name="Coming Soon" data-img="Main/pictures/coming-soon.png" data-link="Main/coming-soon">
         <a href="Main/coming-soon">
@@ -114,6 +163,19 @@
     </div>
 
 </div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const balls = document.querySelectorAll(".ball-item");
+    
+    const totalBalls = Array.from(balls).filter(ball => {
+        const name = ball.dataset.name || "";
+        return name.toLowerCase() !== "coming soon";
+    }).length;
+
+    document.getElementById("totalBalls").textContent = totalBalls;
+});
+</script>
 
 </body>
 </html>
