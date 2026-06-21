@@ -1,87 +1,430 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Form</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Ask a general question or contact us about a bowling ball for sale.">
+  <title>Bowling Ball Questions</title>
 
-<style>
-:root {
-  --bg: #07090f;
-  --glow: #00f0ff;
-  --pink: #ff4fd8;
-  --text: #e5f0ff;
-}
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #07090f;
+      --panel: rgba(12, 18, 32, 0.88);
+      --field: rgba(5, 9, 18, 0.78);
+      --glow: #00f0ff;
+      --pink: #ff4fd8;
+      --text: #e5f0ff;
+      --muted: #91a1b9;
+      --error: #ff7a9e;
+    }
 
-* {
-  box-sizing: border-box;
-}
+    * {
+      box-sizing: border-box;
+    }
 
-html, body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  background:
-    radial-gradient(800px 400px at 20% -10%, rgba(0,240,255,0.15), transparent 40%),
-    radial-gradient(600px 300px at 80% 10%, rgba(255,79,216,0.12), transparent 40%),
-    linear-gradient(180deg, #05070d, #07090f 40%, #05070d);
-  overflow: hidden;
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-}
+    html {
+      min-height: 100%;
+      background: var(--bg);
+    }
 
-/* iframe wrapper */
-.form-wrap {
-  position: absolute;
-  inset: 0;
-  padding: 12px;
-}
+    body {
+      min-height: 100vh;
+      margin: 0;
+      padding: 32px 20px;
+      display: grid;
+      place-items: center;
+      overflow-x: hidden;
+      color: var(--text);
+      background:
+        radial-gradient(800px 400px at 20% -10%, rgba(0, 240, 255, 0.15), transparent 40%),
+        radial-gradient(600px 300px at 80% 10%, rgba(255, 79, 216, 0.12), transparent 40%),
+        linear-gradient(180deg, #05070d, #07090f 40%, #05070d);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
 
-iframe {
-  width: 100%;
-  height: 100%;
-  border-radius: 16px;
-  border: 1px solid rgba(0,240,255,0.25);
-  background: #0c1220;
-  box-shadow:
-    0 20px 40px rgba(0,0,0,0.6),
-    0 0 25px rgba(0,240,255,0.2);
-}
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.28;
+      background-image:
+        linear-gradient(rgba(0, 240, 255, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 240, 255, 0.035) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: linear-gradient(to bottom, black, transparent 80%);
+    }
 
-/* Back Button */
-.back-home-button {
-  position: fixed;
-  top: 14px;
-  left: 14px;
-  padding: 10px 14px;
-  border-radius: 999px;
-  background: linear-gradient(135deg, #00f0ff, #ff4fd8);
-  color: #05070d;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  text-decoration: none;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.6);
-  z-index: 10;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
-}
+    .back-home-button {
+      position: fixed;
+      top: 18px;
+      left: 18px;
+      z-index: 10;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 15px;
+      border-radius: 999px;
+      color: #05070d;
+      background: linear-gradient(135deg, var(--glow), var(--pink));
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      transition: transform 150ms ease, box-shadow 150ms ease;
+    }
 
-.back-home-button:hover {
-  transform: translateY(-2px) scale(1.03);
-  box-shadow: 0 16px 35px rgba(0,0,0,0.75);
-}
-</style>
+    .back-home-button:hover {
+      transform: translateY(-2px) scale(1.03);
+      box-shadow: 0 16px 35px rgba(0, 0, 0, 0.75);
+    }
+
+    .back-home-button:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    select:focus-visible,
+    textarea:focus-visible {
+      outline: 3px solid rgba(0, 240, 255, 0.45);
+      outline-offset: 3px;
+    }
+
+    .contact-card {
+      position: relative;
+      width: min(100%, 760px);
+      margin: 48px auto 0;
+      padding: clamp(28px, 5vw, 52px);
+      border: 1px solid rgba(0, 240, 255, 0.22);
+      border-radius: 24px;
+      overflow: hidden;
+      background: var(--panel);
+      box-shadow:
+        0 24px 70px rgba(0, 0, 0, 0.58),
+        0 0 40px rgba(0, 240, 255, 0.12);
+      backdrop-filter: blur(18px);
+    }
+
+    .contact-card::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--glow), var(--pink), transparent);
+    }
+
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      margin: 0 0 12px;
+      color: var(--glow);
+      font-size: 0.76rem;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--glow);
+      box-shadow: 0 0 14px var(--glow);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2.15rem, 7vw, 4.25rem);
+      line-height: 0.98;
+      letter-spacing: -0.055em;
+    }
+
+    .intro {
+      max-width: 580px;
+      margin: 18px 0 32px;
+      color: var(--muted);
+      font-size: clamp(1rem, 2vw, 1.08rem);
+      line-height: 1.7;
+    }
+
+    form {
+      display: grid;
+      gap: 20px;
+    }
+
+    .field-row {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .field {
+      display: grid;
+      gap: 8px;
+    }
+
+    label {
+      font-size: 0.85rem;
+      font-weight: 750;
+      letter-spacing: 0.025em;
+    }
+
+    .optional {
+      color: var(--muted);
+      font-size: 0.75rem;
+      font-weight: 500;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      border: 1px solid rgba(145, 161, 185, 0.24);
+      border-radius: 12px;
+      color: var(--text);
+      background: var(--field);
+      font: inherit;
+      transition: border-color 150ms ease, box-shadow 150ms ease, background 150ms ease;
+    }
+
+    input,
+    select {
+      height: 50px;
+      padding: 0 15px;
+    }
+
+    textarea {
+      min-height: 150px;
+      padding: 14px 15px;
+      resize: vertical;
+      line-height: 1.5;
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      color: #66758d;
+    }
+
+    input:hover,
+    select:hover,
+    textarea:hover {
+      border-color: rgba(0, 240, 255, 0.45);
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: var(--glow);
+      background: rgba(5, 12, 22, 0.95);
+      box-shadow: 0 0 0 4px rgba(0, 240, 255, 0.09), 0 0 20px rgba(0, 240, 255, 0.08);
+      outline: none;
+    }
+
+    select {
+      cursor: pointer;
+    }
+
+    .form-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      margin-top: 4px;
+    }
+
+    .privacy-note {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.78rem;
+      line-height: 1.45;
+    }
+
+    button {
+      flex: 0 0 auto;
+      min-width: 166px;
+      min-height: 50px;
+      padding: 0 22px;
+      border: 0;
+      border-radius: 999px;
+      color: #05070d;
+      background: linear-gradient(135deg, var(--glow), var(--pink));
+      box-shadow: 0 12px 28px rgba(0, 240, 255, 0.16), 0 10px 24px rgba(0, 0, 0, 0.4);
+      cursor: pointer;
+      font: inherit;
+      font-weight: 850;
+      letter-spacing: 0.02em;
+      transition: transform 150ms ease, box-shadow 150ms ease, opacity 150ms ease;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 34px rgba(255, 79, 216, 0.2), 0 12px 28px rgba(0, 0, 0, 0.48);
+    }
+
+    button:active {
+      transform: translateY(0);
+    }
+
+    button:disabled {
+      cursor: wait;
+      opacity: 0.7;
+    }
+
+    .status {
+      display: none;
+      margin: 0;
+      padding: 13px 15px;
+      border: 1px solid rgba(0, 240, 255, 0.25);
+      border-radius: 12px;
+      color: var(--glow);
+      background: rgba(0, 240, 255, 0.06);
+      font-size: 0.9rem;
+      line-height: 1.45;
+    }
+
+    .status.visible {
+      display: block;
+    }
+
+    .status.error {
+      border-color: rgba(255, 122, 158, 0.35);
+      color: var(--error);
+      background: rgba(255, 122, 158, 0.07);
+    }
+
+    @media (max-width: 620px) {
+      body {
+        display: block;
+        padding: 82px 14px 24px;
+      }
+
+      .back-home-button {
+        top: 14px;
+        left: 14px;
+      }
+
+      .contact-card {
+        margin: 0;
+        border-radius: 18px;
+      }
+
+      .field-row {
+        grid-template-columns: 1fr;
+      }
+
+      .form-footer {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      button {
+        width: 100%;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
 </head>
 
 <body>
-  <a class="back-home-button" href="../">⬅ Back Home</a>
+  <a class="back-home-button" href="../" aria-label="Back to home">← Back Home</a>
 
-  <div class="form-wrap">
-    <iframe 
-      src="https://forms.gle/2EsynQL8vqir5C5Y8" 
-      frameborder="0" 
-      loading="lazy"
-      referrerpolicy="no-referrer-when-downgrade">
-      Loading…
-    </iframe>
-  </div>
+  <main class="contact-card">
+    <p class="eyebrow">Bowling ball contact</p>
+    <h1>Let’s talk bowling.</h1>
+    <p class="intro">Have a general question or want to know more about a bowling ball for sale? Send us a message and we’ll get back to you soon.</p>
+
+    <form id="contact-form" action="https://formspree.io/f/mojoadez" method="POST">
+      <div class="field-row">
+        <div class="field">
+          <label for="name">Name</label>
+          <input id="name" name="name" type="text" autocomplete="name" placeholder="Your name" required>
+        </div>
+
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="subject">What is your question about?</label>
+        <select id="subject" name="subject" required>
+          <option value="" selected disabled>Choose a topic</option>
+          <option value="general">General question</option>
+          <option value="ball-for-sale">Question about a ball for sale</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" placeholder="Type your question here. If you’re asking about a ball, include its name or listing…" required minlength="10"></textarea>
+      </div>
+
+      <p id="form-status" class="status" role="status" aria-live="polite" tabindex="-1"></p>
+
+      <div class="form-footer">
+        <p class="privacy-note">Your details stay private. No spam, no nonsense.</p>
+        <button type="submit">Send message →</button>
+      </div>
+    </form>
+  </main>
+
+  <script>
+    const form = document.querySelector('#contact-form');
+    const status = document.querySelector('#form-status');
+    const submitButton = form.querySelector('button[type="submit"]');
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+
+      const name = form.elements.name.value.trim();
+      submitButton.disabled = true;
+      submitButton.textContent = 'Sending…';
+      status.classList.remove('visible', 'error');
+
+      try {
+        const response = await fetch(form.action, {
+          method: form.method,
+          body: new FormData(form),
+          headers: {
+            Accept: 'application/json'
+          }
+        });
+
+        if (!response.ok) {
+          const result = await response.json().catch(() => ({}));
+          const message = result.errors?.map((error) => error.message).join(' ') ||
+            'We couldn\'t send your message. Please check your details and try again.';
+          throw new Error(message);
+        }
+
+        status.textContent = `Thanks, ${name}! Your message has been sent.`;
+        status.classList.add('visible');
+        form.reset();
+      } catch (error) {
+        status.textContent = error.message || 'Something went wrong. Please try again.';
+        status.classList.add('visible', 'error');
+      } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = 'Send message →';
+        status.focus();
+      }
+    });
+  </script>
 </body>
 </html>
