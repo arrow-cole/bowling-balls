@@ -5,48 +5,104 @@
     <title>Not Yet for Sale</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
+        :root {
+            --bg: #f6f2ea;
+            --bg-deep: #1f2523;
+            --ink: #202624;
+            --muted: #68706a;
+            --panel: #fffaf0;
+            --line: #ded2bf;
+            --accent: #bc3f32;
+            --teal: #1e6b66;
+            --gold: #c48a2c;
+            --shadow: 0 18px 45px rgba(37, 30, 20, 0.14);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
         body {
-            background: #f8f9fa;
-            color: #333;
-            font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
+            min-height: 100vh;
             margin: 0;
+            padding: 24px;
+            display: grid;
+            place-items: center;
+            color: var(--ink);
+            background:
+                linear-gradient(135deg, rgba(30, 107, 102, 0.08) 0 25%, transparent 25% 50%, rgba(188, 63, 50, 0.07) 50% 75%, transparent 75%),
+                linear-gradient(180deg, #fbf7ef 0%, var(--bg) 42%, #efe5d6 100%);
+            background-size: 34px 34px, auto;
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+        }
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            right: 0;
+            left: 0;
+            height: 8px;
+            background: linear-gradient(90deg, var(--accent), var(--gold), var(--teal), var(--bg-deep));
         }
         .container {
-            background: #fff;
-            padding: 2rem 3rem;
-            border-radius: 10px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            width: min(560px, 100%);
+            padding: clamp(24px, 5vw, 42px);
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: rgba(255, 250, 240, 0.9);
+            box-shadow: var(--shadow);
             text-align: center;
         }
         h1 {
-            color: #b22222;
+            color: var(--ink);
+            font-size: clamp(2rem, 6vw, 3.4rem);
+            line-height: 1;
+            font-weight: 900;
+            letter-spacing: 0;
+            text-transform: uppercase;
             margin-bottom: 1rem;
+        }
+        h1::after {
+            content: "";
+            display: block;
+            width: 80px;
+            height: 6px;
+            margin: 14px auto 0;
+            border-radius: 6px;
+            background: linear-gradient(90deg, var(--accent), var(--gold));
         }
         p {
             font-size: 1.2rem;
             margin-bottom: 0.5rem;
+            color: var(--muted);
         }
-        .emoji {
-            font-size: 3rem;
-            margin-bottom: 1rem;
+        strong,
+        a {
+            color: var(--teal);
+            font-weight: 800;
+        }
+        a {
+            text-decoration: none;
+        }
+        a:hover {
+            color: var(--accent);
         }
         .back-btn {
             margin-top: 1.5rem;
-            padding: 0.6rem 1.5rem;
-            font-size: 1rem;
-            background: #e0e0e0;
+            min-height: 42px;
+            padding: 0.65rem 1.5rem;
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
+            color: #fffaf0;
+            background: var(--bg-deep);
             cursor: pointer;
-            transition: background 0.2s;
+            font: inherit;
+            font-weight: 900;
+            transition: background 0.2s, transform 0.2s;
         }
         .back-btn:hover {
-            background: #d1d1d1;
+            background: var(--accent);
+            transform: translateY(-1px);
         }
     </style>
         <link rel="stylesheet" href="styles/home.css">
@@ -54,7 +110,6 @@
 </head>
 <body>
     <div class="container">
-        <div class="emoji">⏳</div>
         <h1>Not Yet on Facebook.</h1>
         <p><strong>Please email me about selling Details.</strong></p>
         <p>We're getting things ready. Please check back soon!</p>

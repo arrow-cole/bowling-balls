@@ -8,15 +8,18 @@
 
   <style>
     :root {
-      color-scheme: dark;
-      --bg: #07090f;
-      --panel: rgba(12, 18, 32, 0.88);
-      --field: rgba(5, 9, 18, 0.78);
-      --glow: #00f0ff;
-      --pink: #ff4fd8;
-      --text: #e5f0ff;
-      --muted: #91a1b9;
-      --error: #ff7a9e;
+      --bg: #f6f2ea;
+      --bg-deep: #1f2523;
+      --ink: #202624;
+      --muted: #68706a;
+      --panel: #fffaf0;
+      --field: #fffdf8;
+      --line: #ded2bf;
+      --accent: #bc3f32;
+      --teal: #1e6b66;
+      --gold: #c48a2c;
+      --error: #9d2f35;
+      --shadow: 0 18px 45px rgba(37, 30, 20, 0.14);
     }
 
     * {
@@ -25,7 +28,7 @@
 
     html {
       min-height: 100%;
-      background: var(--bg);
+      background: var(--bg-deep);
     }
 
     body {
@@ -35,25 +38,22 @@
       display: grid;
       place-items: center;
       overflow-x: hidden;
-      color: var(--text);
+      color: var(--ink);
       background:
-        radial-gradient(800px 400px at 20% -10%, rgba(0, 240, 255, 0.15), transparent 40%),
-        radial-gradient(600px 300px at 80% 10%, rgba(255, 79, 216, 0.12), transparent 40%),
-        linear-gradient(180deg, #05070d, #07090f 40%, #05070d);
+        linear-gradient(135deg, rgba(30, 107, 102, 0.08) 0 25%, transparent 25% 50%, rgba(188, 63, 50, 0.07) 50% 75%, transparent 75%),
+        linear-gradient(180deg, #fbf7ef 0%, var(--bg) 42%, #efe5d6 100%);
+      background-size: 34px 34px, auto;
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
 
     body::before {
       content: "";
       position: fixed;
-      inset: 0;
-      pointer-events: none;
-      opacity: 0.28;
-      background-image:
-        linear-gradient(rgba(0, 240, 255, 0.035) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0, 240, 255, 0.035) 1px, transparent 1px);
-      background-size: 48px 48px;
-      mask-image: linear-gradient(to bottom, black, transparent 80%);
+      top: 0;
+      right: 0;
+      left: 0;
+      height: 8px;
+      background: linear-gradient(90deg, var(--accent), var(--gold), var(--teal), var(--bg-deep));
     }
 
     .back-home-button {
@@ -63,22 +63,20 @@
       z-index: 10;
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      padding: 10px 15px;
-      border-radius: 999px;
-      color: #05070d;
-      background: linear-gradient(135deg, var(--glow), var(--pink));
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
-      font-size: 0.82rem;
+      min-height: 40px;
+      padding: 10px 14px;
+      border: 1px solid rgba(32, 38, 36, 0.16);
+      border-radius: 8px;
+      color: #fffaf0;
+      background: var(--bg-deep);
+      box-shadow: 0 12px 28px rgba(37, 30, 20, 0.16);
+      font-size: 0.9rem;
       font-weight: 800;
-      letter-spacing: 0.04em;
       text-decoration: none;
-      transition: transform 150ms ease, box-shadow 150ms ease;
     }
 
     .back-home-button:hover {
-      transform: translateY(-2px) scale(1.03);
-      box-shadow: 0 16px 35px rgba(0, 0, 0, 0.75);
+      background: var(--accent);
     }
 
     .back-home-button:focus-visible,
@@ -86,7 +84,7 @@
     input:focus-visible,
     select:focus-visible,
     textarea:focus-visible {
-      outline: 3px solid rgba(0, 240, 255, 0.45);
+      outline: 3px solid rgba(30, 107, 102, 0.24);
       outline-offset: 3px;
     }
 
@@ -95,50 +93,48 @@
       width: min(100%, 760px);
       margin: 48px auto 0;
       padding: clamp(28px, 5vw, 52px);
-      border: 1px solid rgba(0, 240, 255, 0.22);
-      border-radius: 24px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
       overflow: hidden;
-      background: var(--panel);
-      box-shadow:
-        0 24px 70px rgba(0, 0, 0, 0.58),
-        0 0 40px rgba(0, 240, 255, 0.12);
-      backdrop-filter: blur(18px);
+      background: rgba(255, 250, 240, 0.9);
+      box-shadow: var(--shadow);
     }
 
     .contact-card::before {
       content: "";
       position: absolute;
       inset: 0 0 auto;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, var(--glow), var(--pink), transparent);
+      height: 7px;
+      background: linear-gradient(90deg, var(--accent), var(--gold), var(--teal));
     }
 
     .eyebrow {
-      display: flex;
-      align-items: center;
-      gap: 9px;
       margin: 0 0 12px;
-      color: var(--glow);
-      font-size: 0.76rem;
-      font-weight: 800;
-      letter-spacing: 0.18em;
+      color: var(--teal);
+      font-size: 0.78rem;
+      font-weight: 900;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-    }
-
-    .eyebrow::before {
-      content: "";
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--glow);
-      box-shadow: 0 0 14px var(--glow);
     }
 
     h1 {
       margin: 0;
-      font-size: clamp(2.15rem, 7vw, 4.25rem);
+      color: var(--ink);
+      font-size: clamp(2rem, 7vw, 4.1rem);
       line-height: 0.98;
-      letter-spacing: -0.055em;
+      font-weight: 900;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    h1::after {
+      content: "";
+      display: block;
+      width: 86px;
+      height: 6px;
+      margin-top: 14px;
+      border-radius: 6px;
+      background: linear-gradient(90deg, var(--accent), var(--gold));
     }
 
     .intro {
@@ -166,27 +162,21 @@
     }
 
     label {
-      font-size: 0.85rem;
-      font-weight: 750;
-      letter-spacing: 0.025em;
-    }
-
-    .optional {
-      color: var(--muted);
-      font-size: 0.75rem;
-      font-weight: 500;
+      color: var(--teal);
+      font-size: 0.9rem;
+      font-weight: 800;
     }
 
     input,
     select,
     textarea {
       width: 100%;
-      border: 1px solid rgba(145, 161, 185, 0.24);
-      border-radius: 12px;
-      color: var(--text);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      color: var(--ink);
       background: var(--field);
       font: inherit;
-      transition: border-color 150ms ease, box-shadow 150ms ease, background 150ms ease;
+      transition: border-color 150ms ease, box-shadow 150ms ease;
     }
 
     input,
@@ -204,22 +194,18 @@
 
     input::placeholder,
     textarea::placeholder {
-      color: #66758d;
+      color: #82796d;
     }
 
     input:hover,
     select:hover,
-    textarea:hover {
-      border-color: rgba(0, 240, 255, 0.45);
-    }
-
+    textarea:hover,
     input:focus,
     select:focus,
     textarea:focus {
-      border-color: var(--glow);
-      background: rgba(5, 12, 22, 0.95);
-      box-shadow: 0 0 0 4px rgba(0, 240, 255, 0.09), 0 0 20px rgba(0, 240, 255, 0.08);
+      border-color: var(--teal);
       outline: none;
+      box-shadow: 0 0 0 3px rgba(30, 107, 102, 0.14);
     }
 
     select {
@@ -237,7 +223,7 @@
     .privacy-note {
       margin: 0;
       color: var(--muted);
-      font-size: 0.78rem;
+      font-size: 0.82rem;
       line-height: 1.45;
     }
 
@@ -247,20 +233,18 @@
       min-height: 50px;
       padding: 0 22px;
       border: 0;
-      border-radius: 999px;
-      color: #05070d;
-      background: linear-gradient(135deg, var(--glow), var(--pink));
-      box-shadow: 0 12px 28px rgba(0, 240, 255, 0.16), 0 10px 24px rgba(0, 0, 0, 0.4);
+      border-radius: 8px;
+      color: #fffaf0;
+      background: var(--bg-deep);
       cursor: pointer;
       font: inherit;
-      font-weight: 850;
-      letter-spacing: 0.02em;
-      transition: transform 150ms ease, box-shadow 150ms ease, opacity 150ms ease;
+      font-weight: 900;
+      transition: background 150ms ease, transform 150ms ease, opacity 150ms ease;
     }
 
     button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 16px 34px rgba(255, 79, 216, 0.2), 0 12px 28px rgba(0, 0, 0, 0.48);
+      background: var(--accent);
+      transform: translateY(-1px);
     }
 
     button:active {
@@ -276,10 +260,10 @@
       display: none;
       margin: 0;
       padding: 13px 15px;
-      border: 1px solid rgba(0, 240, 255, 0.25);
-      border-radius: 12px;
-      color: var(--glow);
-      background: rgba(0, 240, 255, 0.06);
+      border: 1px solid rgba(30, 107, 102, 0.28);
+      border-radius: 8px;
+      color: var(--teal);
+      background: rgba(30, 107, 102, 0.08);
       font-size: 0.9rem;
       line-height: 1.45;
     }
@@ -289,9 +273,9 @@
     }
 
     .status.error {
-      border-color: rgba(255, 122, 158, 0.35);
+      border-color: rgba(157, 47, 53, 0.34);
       color: var(--error);
-      background: rgba(255, 122, 158, 0.07);
+      background: rgba(157, 47, 53, 0.08);
     }
 
     @media (max-width: 620px) {
@@ -307,7 +291,6 @@
 
       .contact-card {
         margin: 0;
-        border-radius: 18px;
       }
 
       .field-row {
