@@ -1,0 +1,2 @@
+<a class="breadcrumb" href="<%= url('index.html') %>">← Back to collection</a>
+<section class="detail"><div class="detail-image"><img src="<%= url(@ball['img']) %>" alt="<%= h(@ball['name']) %>"></div><div><p class="eyebrow"><%= h(@ball['brand']) %> / BALL SPECIFICATIONS</p><h1><%= h(@ball['name']) %></h1><dl><% @ball['specs'].each do |key,value| %><div><dt><%= h(key) %></dt><dd><%= h(value) %></dd></div><% end %></dl></div></section>

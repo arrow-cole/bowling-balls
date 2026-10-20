@@ -22,3 +22,8 @@ Desktop.ini
 
 # Local tour notes
 /tour.md
+
+# Ruby dependencies and generated static site
+.bundle/
+vendor/bundle/
+_site/

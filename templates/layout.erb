@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="My personal bowling collection, ball specifications, and tournament bag.">
+  <title><%= h(@title) %> · Bowling collection</title>
+  <link rel="stylesheet" href="<%= url('assets/site.css') %>">
+  <script src="<%= url('assets/site.js') %>" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header><div class="header-inner"><a class="wordmark" href="<%= url('index.html') %>"><span class="logo" aria-hidden="true">●</span> Bowling collection<span class="small-label">THE PERSONAL ARSENAL</span></a>
+<nav aria-label="Main navigation">
+<% {'index.html'=>'Collection','tour.html'=>'Tournament bag','Main/brands.html'=>'Brands','Retired/index.html'=>'Retired','form/index.html'=>'Contact'}.each do |path,label| %>
+<a href="<%= url(path) %>" <%= 'aria-current="page"' if @path == path %>><%= label %></a>
+<% end %>
+</nav></div></header>
+<main id="main"><%= @content %></main>
+<footer><span>Bowling collection</span><span>A ball for every lane.</span><a href="<%= url('form/index.html') %>">Get in touch ↗</a></footer>
+</body></html>

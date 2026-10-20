@@ -1,0 +1,342 @@
+[
+  {
+    "id": "Black-v-m",
+    "name": "Black Venom",
+    "img": "Main/pictures/ball1.png",
+    "link": "Main/ball1.html",
+    "specs": {
+      "Brand": "Motiv",
+      "Model": "Black Venom",
+      "Serial #": "WAS 04988",
+      "Weight": "14 lbs",
+      "Color": "Black",
+      "Core Type": "Gear APG Asymmetric",
+      "Core Shape": "Asymmetrical",
+      "Coverstock": "Leverage MFS Solid Reactive",
+      "Finish": "4000 Grit Sanded",
+      "RG": "2.50",
+      "Diff": "0.033"
+    },
+    "brand": "Motiv"
+  },
+  {
+    "id": "Jackal-g-m",
+    "name": "Jackal Ghost",
+    "img": "Main/pictures/ball2.png",
+    "link": "Main/ball2.html",
+    "specs": {
+      "Brand": "Motiv",
+      "Model": "Jackal Ghost",
+      "Serial #": "WGP 04709",
+      "Weight": "14 lbs",
+      "Color": "Black / Purple Solid",
+      "Core Type": "Predator\u2122 V2 Asymmetric",
+      "Core Shape": "Asymmetrical",
+      "Coverstock": "Coercion\u2122 HFS Reactive",
+      "Finish": "3000 Grit LSS",
+      "RG": "2.51",
+      "Diff": "0.033"
+    },
+    "brand": "Motiv"
+  },
+  {
+    "id": "Thrill-h-m",
+    "name": "Thrill Hybrid",
+    "img": "Main/pictures/ball3.png",
+    "link": "Main/ball3.html",
+    "specs": {
+      "Brand": "Motiv",
+      "Model": "Thrill Hybrid",
+      "Serial #": "WES 08831",
+      "Weight": "14 lbs",
+      "Color": "Sky Blue / Purple Pearl",
+      "Core Type": "Halogen\u2122",
+      "Core Shape": "Symmetrical",
+      "Coverstock": "Turmoil\u2122 XP3 Hybrid Reactive",
+      "Finish": "5500 Grit LSP",
+      "RG": "2.56",
+      "Diff": "0.038"
+    },
+    "brand": "Motiv"
+  },
+  {
+    "id": "Raptor-r-m",
+    "name": "Raptor Reign",
+    "img": "Main/pictures/ball4.png",
+    "link": "Main/ball4.html",
+    "specs": {
+      "Brand": "Motiv",
+      "Model": "Raptor Reign",
+      "Serial #": "WHS 06307",
+      "Weight": "14 lbs",
+      "Color": "Black / Dark Teal / Charcoal",
+      "Core Type": "Affliction\u2122 V2",
+      "Core Shape": "Symmetrical",
+      "Coverstock": "Leverage\u2122 MXV Solid Reactive",
+      "Finish": "2000 Grit Laser Scan Sanded",
+      "RG": "2.50",
+      "Diff": "0.053"
+    },
+    "brand": "Motiv"
+  },
+  {
+    "id": "Forge-e-m",
+    "name": "Forge Ember",
+    "img": "Main/pictures/ball5.png",
+    "link": "Main/ball5.html",
+    "specs": {
+      "Brand": "Motiv",
+      "Model": "Forge Ember",
+      "Serial #": "WF0 09137D",
+      "Weight": "15 lbs",
+      "Color": "Gray / Red Pearl / Solid Black",
+      "Core Type": "Detonator\u2122 Symmetric",
+      "Core Shape": "Symmetrical",
+      "Coverstock": "Infusion\u2122 MXC Hybrid Reactive",
+      "Finish": "2000 Grit LSS",
+      "RG": "2.47",
+      "Diff": "0.055"
+    },
+    "brand": "Motiv"
+  },
+  {
+    "id": "Primal-g-m",
+    "name": "Primal Ghost",
+    "img": "Main/pictures/ball6.png",
+    "link": "Main/ball6.html",
+    "specs": {
+      "Brand": "Motiv",
+      "Model": "Primal Ghost",
+      "Serial #": "WIS 00957",
+      "Weight": "15 lbs",
+      "Color": "Purple / Black Solid",
+      "Core Type": "Impulse\u2122 V2 Symmetric",
+      "Core Shape": "Symmetrical",
+      "Coverstock": "Coercion\u2122 HFS Reactive",
+      "Finish": "3000 Grit LSS",
+      "RG": "2.55",
+      "Diff": "0.050"
+    },
+    "brand": "Motiv"
+  },
+  {
+    "id": "Apex-j-m",
+    "name": "Apex Jackal",
+    "img": "Main/pictures/ball7.png",
+    "link": "Main/ball7.html",
+    "specs": {
+      "Brand": "Motiv",
+      "Model": "Apex Jackal",
+      "Serial #": "WLS 04644",
+      "Weight": "15 lbs",
+      "Color": "3\u2011Tone Teal Pearl",
+      "Core Type": "Apex Predator\u2122",
+      "Core Shape": "Asymmetrical",
+      "Coverstock": "Propulsion\u2122 MXV Pearl Reactive",
+      "Finish": "5000 Grit LSS",
+      "RG": "2.52",
+      "Diff": "0.055"
+    },
+    "brand": "Motiv"
+  },
+  {
+    "id": "Evoke-m-m",
+    "name": "Evoke Mayhem",
+    "img": "Main/pictures/ball8.png",
+    "link": "Main/ball8.html",
+    "specs": {
+      "Brand": "Motiv",
+      "Model": "Evoke Mayhem",
+      "Serial #": "WAT 05459",
+      "Weight": "15 lbs",
+      "Color": "Teal / Purple / Pink",
+      "Core Type": "POverload\u2122 Asymmetrical",
+      "Core Shape": "Asymmetrical",
+      "Coverstock": "Propulsion\u2122 MXV Solid Reactive",
+      "Finish": "2000 Grit LSS",
+      "RG": "2.48",
+      "Diff": "0.050"
+    },
+    "brand": "Motiv"
+  },
+  {
+    "id": "Nebula-m",
+    "name": "Nebula",
+    "img": "Main/pictures/ball9.png",
+    "link": "Main/ball9.html",
+    "specs": {
+      "Brand": "Motiv",
+      "Model": "Nebula",
+      "Serial #": "WJS 10066",
+      "Weight": "15 lbs",
+      "Color": "Cosmic Black Pearl",
+      "Core Type": "Hadron\u2122 Symmetrical",
+      "Core Shape": "Symmetrical",
+      "Coverstock": "Dark Matter Propulsion\u2122 Pearl Reactive",
+      "Finish": "5500 Grit LSP",
+      "RG": "2.50",
+      "Diff": "0.045"
+    },
+    "brand": "Motiv"
+  },
+  {
+    "id": "Aspire-m",
+    "name": "Aspire",
+    "img": "Main/pictures/ball10.png",
+    "link": "Main/ball10.html",
+    "specs": {
+      "Brand": "Motiv",
+      "Model": "Aspire",
+      "Serial #": "UYJ157043MT",
+      "Weight": "15 lbs",
+      "Color": "Black / Red / Gold",
+      "Core Type": "Symmetrical Tyro core",
+      "Core Shape": "Symmetrical",
+      "Coverstock": "Polyester",
+      "Finish": "6000 Grit LSP",
+      "RG": "2.75",
+      "Diff": "0.024"
+    },
+    "brand": "Motiv"
+  },
+  {
+    "id": "Primal-r-m",
+    "name": "Primal Rage",
+    "img": "Main/pictures/ball11.png",
+    "link": "Main/ball11.html",
+    "specs": {
+      "Brand": "Motiv",
+      "Model": "Primal Rage",
+      "Serial #": "WHH 03231",
+      "Weight": "15 lbs",
+      "Color": "Lava Red Pearl with Black and Green Pearl Neomark",
+      "Core Type": "Impulse V2",
+      "Core Shape": "Symmetrical",
+      "Coverstock": "Fusion Pearl Reactive",
+      "Finish": "5000 Grit Laser Scan Polished (LSP)",
+      "RG": "2.55",
+      "Diff": "0.050"
+    },
+    "brand": "Motiv"
+  },
+  {
+    "id": "Venom-e-m",
+    "name": "Venom ExJ",
+    "img": "Main/pictures/ball12.png",
+    "link": "Main/ball12.html",
+    "specs": {
+      "Brand": "Motiv",
+      "Model": "Venom ExJ",
+      "Serial #": "WER 01421 D",
+      "Weight": "15 lbs",
+      "Color": "Dark Purple / Purple / Green Solid",
+      "Core Type": "Gear\u2122 Symmetrical",
+      "Core Shape": "Symmetrical",
+      "Coverstock": "Turmoil\u2122 MXC Solid Reactive",
+      "Finish": "2000 Grit LSS",
+      "RG": "2.48",
+      "Diff": "0.034"
+    },
+    "brand": "Motiv"
+  },
+  {
+    "id": "Sigma-t-m",
+    "name": "Sigma Tour",
+    "img": "Main/pictures/ball13.png",
+    "link": "Main/ball13.html",
+    "specs": {
+      "Brand": "Motiv",
+      "Model": "Sigma Tour",
+      "Serial #": "WET 08714",
+      "Weight": "15 lbs",
+      "Color": "Dark Purple / Purple / Red Pearl",
+      "Core Type": "Gear\u2122 Symmetrical",
+      "Core Shape": "Symmetrical",
+      "Coverstock": "Turmoil\u2122 MXC Solid Reactive",
+      "Finish": "2000 Grit LSS",
+      "RG": "2.48",
+      "Diff": "0.034"
+    },
+    "brand": "Motiv"
+  },
+  {
+    "id": "Purple-h",
+    "name": "Purple Hammer 78D",
+    "img": "Main/pictures/ball14.png",
+    "link": "Main/ball14.html",
+    "specs": {
+      "Brand": "Hammer",
+      "Model": "Purple Hammer 78D",
+      "Serial #": "??",
+      "Weight": "15 lbs",
+      "Color": "Purple Pearl",
+      "Core Type": "Super LED",
+      "Core Shape": "Symmetrical",
+      "Coverstock": "Urethane Pearl 78D",
+      "Finish": "500 Siaair Micro Pad",
+      "RG": "2.632",
+      "Diff": "0.034"
+    },
+    "brand": "Hammer"
+  },
+  {
+    "id": "Envy-t-h",
+    "name": "Envy Tour",
+    "img": "Main/pictures/ball15.png",
+    "link": "Main/ball15.html",
+    "specs": {
+      "Brand": "Hammer",
+      "Model": "Envy Tour",
+      "Serial #": "FSB2177C",
+      "Weight": "15 lbs",
+      "Color": "Black",
+      "Core Type": "Obsession Tour",
+      "Core Shape": "Asymmetrical",
+      "Coverstock": "Envy Solid",
+      "Finish": "500, 1000 Siaair Micro Pad",
+      "RG": "2.469",
+      "Diff": "0.013"
+    },
+    "brand": "Hammer"
+  },
+  {
+    "id": "Venom-t-m",
+    "name": "Venom Toxin",
+    "img": "Main/pictures/ball16.png",
+    "link": "Main/ball16.html",
+    "specs": {
+      "Brand": "Motiv",
+      "Model": "Venom Toxin",
+      "Serial #": "WGF 00373",
+      "Weight": "15 lbs",
+      "Color": "Neon Green / Green Pearl / Purple",
+      "Core Type": "Symmetrical Gear low-RG core",
+      "Core Shape": "Symmetrical",
+      "Coverstock": "Atomix Hybrid Radial Reactive",
+      "Finish": "5500 Grit Laser Scan Polished",
+      "RG": "2.48",
+      "Diff": "0.034"
+    },
+    "brand": "Motiv"
+  },
+  {
+    "id": "Forge-f-m",
+    "name": "Forge Fuel",
+    "img": "Main/pictures/ball17.png",
+    "link": "Main/ball17.html",
+    "specs": {
+      "Brand": "Motiv",
+      "Model": "Forge Fuel",
+      "Serial #": "WGT 05903",
+      "Weight": "15 lbs",
+      "Color": "Solid Red / Orange / Yellow",
+      "Core Type": "Detonator\u2122 Symmetrical",
+      "Core Shape": "Symmetrical",
+      "Coverstock": "Leverage\u2122 MXT Solid Reactive",
+      "Finish": "1000 Grit LSS",
+      "RG": "2.47",
+      "Diff": "0.055"
+    },
+    "brand": "Motiv"
+  }
+]

@@ -1,0 +1,43 @@
+#!/usr/bin/env ruby
+require 'erb'
+require 'json'
+require 'cgi'
+require 'fileutils'
+ROOT = File.expand_path('..', __dir__)
+OUT = File.join(ROOT, '_site')
+class Site
+  def initialize
+    @balls = JSON.parse(File.read(File.join(ROOT, 'data/balls.json')))
+    @bag = JSON.parse(File.read(File.join(ROOT, 'data/bag.json')))
+  end
+  def h(value); CGI.escapeHTML(value.to_s); end
+  def url(path); @prefix + path.sub(%r{^/}, ''); end
+  def render(template); ERB.new(File.read(File.join(ROOT, 'templates', template))).result(binding); end
+  def build
+    FileUtils.mkdir_p(OUT)
+    %w[Main Retired Selling assets].each do |dir|
+      Dir.glob(File.join(ROOT, dir, '**', '*')).select { |p| File.file?(p) && p.match?(/\.(png|jpg|jpeg|webp|svg|css|js)$/i) }.each do |path|
+        target = File.join(OUT, path.delete_prefix(ROOT + '/'))
+        FileUtils.mkdir_p(File.dirname(target)); FileUtils.cp(path, target)
+      end
+    end
+    Dir.glob(File.join(ROOT, 'templates/pages/**/*.erb')).each do |source|
+      @path = source.delete_prefix(File.join(ROOT, 'templates/pages/')).sub(/\.erb$/, '.html')
+      @prefix = '../' * (@path.split('/').length - 1)
+      @ball = @balls.find { |b| b['link'] == @path }
+      @title = @ball ? @ball['name'] : {'index.html'=>'My bowling balls', 'tour.html'=>'Tournament bag', 'Main/brands.html'=>'Brand totals', 'Retired/index.html'=>'Retired balls', 'form/index.html'=>'Get in touch'}[@path] || 'Bowling collection'
+      @selected = @path == 'tour.html' ? @balls.select { |b| @bag.include?(b['id']) } : @balls
+      @content = if %w[index.html tour.html].include?(@path)
+        render('collection.erb')
+      elsif @ball
+        render('detail.erb')
+      else
+        ERB.new(File.read(source)).result(binding)
+      end
+      target = File.join(OUT, @path)
+      FileUtils.mkdir_p(File.dirname(target)); File.write(target, render('layout.erb'))
+    end
+    puts "Built #{Dir.glob(File.join(OUT, '**/*.html')).length} pages in #{OUT}"
+  end
+end
+Site.new.build
