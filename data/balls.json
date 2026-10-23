@@ -338,5 +338,65 @@
       "Diff": "0.055"
     },
     "brand": "Motiv"
+  },
+  {
+    "id": "Katana-a-r",
+    "name": "Katana Assault",
+    "img": "Main/pictures/ball18.png",
+    "link": "Main/ball18.html",
+    "specs": {
+      "Brand": "Radical",
+      "Model": "Katana Assault",
+      "Serial #": "KPA1028D",
+      "Weight": "15 lbs",
+      "Color": "Smoke / Black / Blue",
+      "Core Type": "Katana Assault Asymmetric",
+      "Core Shape": "Asymmetrical",
+      "Coverstock": "HK22 - HyperKinetic Pearl Reactive",
+      "Finish": "500, 1000, 1500 Siaair / Crown Factory Compound",
+      "RG": "2.501",
+      "Diff": "0.020  "
+    },
+    "brand": "Radical"
+  },
+  {
+    "id": "Sniper-s-m",
+    "name": "Sniper",
+    "img": "Main/pictures/ball19.png",
+    "link": "Main/ball19.html",
+    "specs": {
+      "Brand": "Motiv",
+      "Model": "Sniper",
+      "Serial #": "???",
+      "Weight": "15 lbs",
+      "Color": "Silver",
+      "Core Type": "Hollow Point",
+      "Core Shape": "Symmetrical",
+      "Coverstock": "TruShot™ Polythane",
+      "Finish": "5500 Grit LSP",
+      "RG": "2.68",
+      "Diff": "0.010"
+    },
+    "brand": "Motiv"
+  },
+  {
+    "id": "Primal-tv4-m",
+    "name": "Primal tv4",
+    "img": "Main/pictures/ball20.png",
+    "link": "Main/ball20.html",
+    "specs": {
+      "Brand": "Motiv",
+      "Model": "Primal tv4",
+      "Serial #": "WGT 05903",
+      "Weight": "15 lbs",
+      "Color": "Solid Red / Orange / Yellow",
+      "Core Type": "Thrust",
+      "Core Shape": "Symmetrical",
+      "Coverstock": "Vicious Pearl Reactive",
+      "Finish": "5500 Grit Laser Scan Polished",
+      "RG": "2.54",
+      "Diff": "0.052"
+    },
+    "brand": "Motiv"
   }
 ]

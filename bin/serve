@@ -1,9 +1,114 @@
 #!/usr/bin/env ruby
 require 'webrick'
+require 'rbconfig'
+require 'digest'
+require 'json'
+require 'fileutils'
+require 'securerandom'
+
 root = File.expand_path('..', __dir__)
-abort 'Build first: ruby bin/build' unless Dir.exist?(File.join(root, '_site'))
-server = WEBrick::HTTPServer.new(Port: Integer(ENV.fetch('PORT', '4000')), BindAddress: '127.0.0.1', DocumentRoot: File.join(root, '_site'))
+output = File.join(root, '_site')
+staging = File.join(root, '_preview_build')
+lock = Mutex.new
+revision = SecureRandom.hex(8)
+error = nil
+fingerprint = lambda do
+  files = %w[templates data assets Main Retired Selling bin/build].flat_map do |dir|
+    path = File.join(root, dir)
+    File.file?(path) ? [path] : Dir.glob(File.join(path, '**', '*')).select { |f| File.file?(f) }
+  end
+  Digest::SHA256.hexdigest(files.sort.map { |f| "#{f}:#{File.stat(f).mtime.to_f}:#{File.size(f)}" }.join("\n"))
+end
+build = lambda do
+  if system({'BOWLING_PREVIEW_BUILD' => '1'}, RbConfig.ruby, File.join(root, 'bin/build'))
+    lock.synchronize do
+      raise 'Refusing to replace symlinked preview output' if File.symlink?(output)
+      FileUtils.rm_rf(output)
+      FileUtils.mv(staging, output)
+      revision = SecureRandom.hex(8)
+      error = nil
+    end
+    puts 'Preview updated.'
+  else
+    lock.synchronize { error = 'Build failed. Check the preview terminal, fix the source, and save again.' }
+    warn error
+  end
+end
+last = fingerprint.call
+build.call
+
+# Only the preview server injects this script; published files stay unchanged.
+class LiveFiles < WEBrick::HTTPServlet::FileHandler
+  def initialize(server, directory, lock, revision)
+    super(server, directory)
+    @lock, @revision = lock, revision
+  end
+  def service(req, res)
+    @lock.synchronize do
+      super
+      res['Cache-Control'] = 'no-store'
+      if res.status == 200 && res['Content-Type'].to_s.start_with?('text/html')
+        html = res.body.respond_to?(:read) ? res.body.read : res.body.to_s
+        res.body.close if res.body.respond_to?(:close)
+        script = <<~JS
+          <script>
+          (() => {
+            const initial = #{@revision.call.to_json};
+            let banner;
+            async function check() {
+              try {
+                const response = await fetch('/__preview_status', {cache: 'no-store'});
+                const state = await response.json();
+                if (state.error) {
+                  if (!banner) {
+                    banner = document.createElement('div');
+                    banner.setAttribute('role', 'alert');
+                    banner.style.cssText = 'position:fixed;bottom:16px;left:16px;right:16px;z-index:9999;padding:16px;background:#8f1017;color:white;border-radius:8px;font:14px system-ui';
+                    document.body.appendChild(banner);
+                  }
+                  banner.textContent = state.error;
+                } else if (state.revision !== initial) {
+                  location.reload();
+                  return;
+                } else if (banner) { banner.remove(); banner = null; }
+              } catch (_) { /* Retry if the preview server is restarting. */ }
+              setTimeout(check, 1000);
+            }
+            setTimeout(check, 1000);
+          })();
+          </script>
+        JS
+        res.body = html.sub(/<\/body>/i) { script + '</body>' }
+        res['Content-Length'] = res.body.bytesize.to_s
+      end
+    end
+  end
+end
+server = WEBrick::HTTPServer.new(Port: Integer(ENV.fetch('PORT', '4000')), BindAddress: '127.0.0.1')
+server.mount('/', LiveFiles, output, lock, -> { revision })
+server.mount_proc('/__preview_status') do |_req, res|
+  res['Content-Type'] = 'application/json'
+  res['Cache-Control'] = 'no-store'
+  res.body = lock.synchronize { {revision: revision, error: error}.to_json }
+end
+watcher = Thread.new do
+  loop do
+    sleep 0.5
+    current = fingerprint.call
+    next if current == last
+    sleep 0.2 # Coalesce saves that replace a file in several operations.
+    last = fingerprint.call
+    build.call
+  rescue StandardError => exception
+    warn "Preview watcher: #{exception.message}"
+  end
+end
 trap('INT') { server.shutdown }
 trap('TERM') { server.shutdown }
-puts 'Preview: http://127.0.0.1:' + server.config[:Port].to_s
-server.start
+puts "Live preview: http://127.0.0.1:#{server.config[:Port]} (save a source file to refresh)"
+begin
+  server.start
+ensure
+  watcher.kill
+  watcher.join
+end

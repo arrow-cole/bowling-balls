@@ -5,12 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="My personal bowling collection, ball specifications, and tournament bag.">
   <title><%= h(@title) %> · Bowling collection</title>
+  <link rel="icon" type="image/png" href="<%= url('Main/pictures/logo.png') %>">
   <link rel="stylesheet" href="<%= url('assets/site.css') %>">
   <script src="<%= url('assets/site.js') %>" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<header><div class="header-inner"><a class="wordmark" href="<%= url('index.html') %>"><span class="logo" aria-hidden="true">●</span> Bowling collection<span class="small-label">THE PERSONAL ARSENAL</span></a>
+<header><div class="header-inner"><a class="wordmark" href="<%= url('index.html') %>"><img class="brand-ball" src="<%= url('Main/pictures/logo.png') %>" alt=""><span class="small-label">MY PERSONAL ARSENAL</span><span class="brand-title">Bowling Collection</span></a>
 <nav aria-label="Main navigation">
 <% {'index.html'=>'Collection','tour.html'=>'Tournament bag','Main/brands.html'=>'Brands','Retired/index.html'=>'Retired','form/index.html'=>'Contact'}.each do |path,label| %>
 <a href="<%= url(path) %>" <%= 'aria-current="page"' if @path == path %>><%= label %></a>

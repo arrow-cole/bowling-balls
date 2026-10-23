@@ -27,3 +27,6 @@ Desktop.ini
 .bundle/
 vendor/bundle/
 _site/
+
+# Temporary live-preview build
+_preview_build/

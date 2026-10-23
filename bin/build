@@ -3,8 +3,9 @@ require 'erb'
 require 'json'
 require 'cgi'
 require 'fileutils'
+require 'pathname'
 ROOT = File.expand_path('..', __dir__)
-OUT = File.join(ROOT, '_site')
+OUT = File.join(ROOT, ENV['BOWLING_PREVIEW_BUILD'] == '1' ? '_preview_build' : '_site')
 class Site
   def initialize
     @balls = JSON.parse(File.read(File.join(ROOT, 'data/balls.json')))
@@ -13,7 +14,32 @@ class Site
   def h(value); CGI.escapeHTML(value.to_s); end
   def url(path); @prefix + path.sub(%r{^/}, ''); end
   def render(template); ERB.new(File.read(File.join(ROOT, 'templates', template))).result(binding); end
+  def clean_path(path)
+    path.sub(/index\.html$/, '').sub(/\.html$/, '/')
+  end
+
+  # Resolve links at their original location before moving pages into directories.
+  # Relative links keep the site usable under a hosting subdirectory too.
+  def clean_links(html, destination)
+    html.gsub(/\b(href|src)=(['"])(.*?)\2/) do
+      attribute, quote, value = Regexp.last_match.captures
+      if value.empty? || value.start_with?('#', '/') || value.match?(/\A[a-z][a-z0-9+.-]*:/i)
+        "#{attribute}=#{quote}#{value}#{quote}"
+      else
+        path, suffix = value.split(/(?=[?#])/, 2)
+        resolved = Pathname.new(File.join(File.dirname(@path), path)).cleanpath.to_s
+        clean = clean_path(resolved)
+        relative = Pathname.new(clean.empty? ? '.' : clean).relative_path_from(Pathname.new(File.dirname(destination))).to_s
+        relative += '/' if clean.end_with?('/') || clean.empty?
+        "#{attribute}=#{quote}#{relative}#{suffix}#{quote}"
+      end
+    end
+  end
+
   def build
+    # _site is generated output; recreate it so deleted sources cannot linger.
+    raise 'Refusing to replace a symlinked output directory' if File.symlink?(OUT)
+    FileUtils.rm_rf(OUT)
     FileUtils.mkdir_p(OUT)
     %w[Main Retired Selling assets].each do |dir|
       Dir.glob(File.join(ROOT, dir, '**', '*')).select { |p| File.file?(p) && p.match?(/\.(png|jpg|jpeg|webp|svg|css|js)$/i) }.each do |path|
@@ -21,8 +47,15 @@ class Site
         FileUtils.mkdir_p(File.dirname(target)); FileUtils.cp(path, target)
       end
     end
-    Dir.glob(File.join(ROOT, 'templates/pages/**/*.erb')).each do |source|
-      @path = source.delete_prefix(File.join(ROOT, 'templates/pages/')).sub(/\.erb$/, '.html')
+    pages = Dir.glob(File.join(ROOT, 'templates/pages/**/*.erb')).to_h do |source|
+      [source.delete_prefix(File.join(ROOT, 'templates/pages/')).sub(/\.erb$/, '.html'), source]
+    end
+    # Shared templates generate these routes directly from the collection data.
+    (['index.html', 'tour.html'] + @balls.map { |ball| ball.fetch('link') }).each do |path|
+      pages[path] = nil
+    end
+    pages.sort.each do |path, source|
+      @path = path
       @prefix = '../' * (@path.split('/').length - 1)
       @ball = @balls.find { |b| b['link'] == @path }
       @title = @ball ? @ball['name'] : {'index.html'=>'My bowling balls', 'tour.html'=>'Tournament bag', 'Main/brands.html'=>'Brand totals', 'Retired/index.html'=>'Retired balls', 'form/index.html'=>'Get in touch'}[@path] || 'Bowling collection'
@@ -34,8 +67,15 @@ class Site
       else
         ERB.new(File.read(source)).result(binding)
       end
-      target = File.join(OUT, @path)
-      FileUtils.mkdir_p(File.dirname(target)); File.write(target, render('layout.erb'))
+      destination = @path.end_with?('index.html') ? @path : @path.sub(/\.html$/, '/index.html')
+      target = File.join(OUT, destination)
+      FileUtils.mkdir_p(File.dirname(target))
+      File.write(target, clean_links(render('layout.erb'), destination))
+      if destination != @path
+        # Preserve old bookmarks while directing visitors to the clean URL.
+        redirect = File.basename(@path, '.html') + '/'
+        File.write(File.join(OUT, @path), %Q{<!doctype html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="refresh" content="0;url=#{h(redirect)}"><title>Page moved</title></head><body><a href="#{h(redirect)}">Continue to #{h(@title)}</a></body></html>})
+      end
     end
     puts "Built #{Dir.glob(File.join(OUT, '**/*.html')).length} pages in #{OUT}"
   end
