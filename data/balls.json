@@ -260,26 +260,6 @@
     "brand": "Motiv"
   },
   {
-    "id": "Purple-h",
-    "name": "Purple Hammer 78D",
-    "img": "Main/pictures/ball14.png",
-    "link": "Main/ball14.html",
-    "specs": {
-      "Brand": "Hammer",
-      "Model": "Purple Hammer 78D",
-      "Serial #": "??",
-      "Weight": "15 lbs",
-      "Color": "Purple Pearl",
-      "Core Type": "Super LED",
-      "Core Shape": "Symmetrical",
-      "Coverstock": "Urethane Pearl 78D",
-      "Finish": "500 Siaair Micro Pad",
-      "RG": "2.632",
-      "Diff": "0.034"
-    },
-    "brand": "Hammer"
-  },
-  {
     "id": "Envy-t-h",
     "name": "Envy Tour",
     "img": "Main/pictures/ball15.png",
@@ -372,7 +352,7 @@
       "Color": "Silver",
       "Core Type": "Hollow Point",
       "Core Shape": "Symmetrical",
-      "Coverstock": "TruShot™ Polythane",
+      "Coverstock": "TruShot\u2122 Polythane",
       "Finish": "5500 Grit LSP",
       "RG": "2.68",
       "Diff": "0.010"
